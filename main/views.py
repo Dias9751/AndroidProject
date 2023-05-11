@@ -273,7 +273,7 @@ def restaurant_detail(request, restaurant_id):
 
     serializer = RestaurantSerializer(restaurant)
     return JsonResponse(serializer.data)
-
+ 
 @csrf_exempt
 def delivery_detail(request, delivery_id):
     try:

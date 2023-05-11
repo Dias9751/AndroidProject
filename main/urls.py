@@ -25,3 +25,4 @@ urlpatterns = [
     path('delivery/<int:delivery_id>/', delivery_detail),
 
 ]
+ 

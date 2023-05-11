@@ -129,3 +129,5 @@ class Delivery(models.Model):
             'product_id': self.product_id,
             'user_id': self.user_id
         }
+
+

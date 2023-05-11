@@ -68,3 +68,5 @@ class DeliverySerializer(serializers.ModelSerializer):
         fields = ('id', 'delivery_company', 'description', 'image_url',
         'created_at', 'delivery_date', 'card_number', 'CSV', 'card_name',
         'street', 'home', 'appartment', 'user', 'user_id', 'item', 'item_id')
+
+ 
