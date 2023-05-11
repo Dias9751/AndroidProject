@@ -25,7 +25,7 @@ class ItemSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(write_only=True)
     class Meta:
         model = Item
-        fields = ('id', 'name', 'description', 'price', 'image_url', 'created_at', 'updated_at', 'category', 'categoty_id')
+        fields = ('id', 'name', 'description', 'price', 'image_url', 'created_at', 'updated_at', 'category', 'category_id')
 
 class BasketSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
@@ -45,7 +45,7 @@ class CommentsSerializer(serializers.ModelSerializer):
     item_id = serializers.IntegerField(write_only=True)
     class Meta:
         model = Comments
-        fields = ('id', 'description', 'created_at', 'user', 'user_id', 'item', 'item_id')
+        fields = ('id', 'user', 'user_id', 'item', 'item_id', 'description', 'created_at')
 
 class RatingsSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
@@ -55,7 +55,7 @@ class RatingsSerializer(serializers.ModelSerializer):
     item_id = serializers.IntegerField(write_only=True)
     class Meta:
         model = Ratings
-        fields = ('id', 'rating', 'created_at,' 'user', 'user_id', 'item', 'item_id')
+        fields = ('id', 'rating', 'created_at', 'user', 'user_id', 'item', 'item_id')
 
 class DeliverySerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)

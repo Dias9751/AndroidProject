@@ -46,7 +46,7 @@ class RolesListAPIView(APIView):
 class CategoryListAPIView(APIView):
     def get(self, request):
         category = Category.objects.all()
-        serializer = UserSerializer(category, many=True)
+        serializer = CategorySerializer(category, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -85,7 +85,7 @@ class BasketListAPIView(APIView):
 class CommentsListAPIView(APIView):
     def get(self, request):
         comments = Comments.objects.all()
-        serializer = CommentsSerializer(user, many=True)
+        serializer = CommentsSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -98,7 +98,7 @@ class CommentsListAPIView(APIView):
 class RatingsListAPIView(APIView):
     def get(self, request):
         ratings = Ratings.objects.all()
-        serializer = UserSerializer(ratings, many=True)
+        serializer = RatingsSerializer(ratings, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -111,7 +111,7 @@ class RatingsListAPIView(APIView):
 class DeliveryListAPIView(APIView):
     def get(self, request):
         delivery = Delivery.objects.all()
-        serializer = DeliverySerializer(user, many=True)
+        serializer = DeliverySerializer(delivery, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
@@ -132,9 +132,9 @@ def user_detail(request, user_id):
     return JsonResponse(serializer.data)
 
 @csrf_exempt
-def roles_detail(request, roles_id):
+def roles_detail(request, role_id):
     try:
-        roles = Roles.objects.get(role_id=roles_id)
+        roles = Roles.objects.get(id=role_id)
     except Roles.DoesNotExist as e:
         return JsonResponse({'message': str(e)}, status=400)
 
@@ -154,7 +154,7 @@ def category_detail(request, category_id):
 @csrf_exempt
 def item_detail(request, item_id):
     try:
-        item = Item.objects.get(product_id=item_id)
+        item = Item.objects.get(id=item_id)
     except Item.DoesNotExist as e:
         return JsonResponse({'message': str(e)}, status=400)
 
@@ -164,7 +164,7 @@ def item_detail(request, item_id):
 @csrf_exempt
 def basket_detail(request, basket_id):
     try:
-        basket = Basket.objects.get(basket_id=basket_id)
+        basket = Basket.objects.get(id=basket_id)
     except Basket.DoesNotExist as e:
         return JsonResponse({'message': str(e)}, status=400)
 
@@ -174,7 +174,7 @@ def basket_detail(request, basket_id):
 @csrf_exempt
 def comments_detail(request, comments_id):
     try:
-        comments = Comments.objects.get(comment_id=comments_id)
+        comments = Comments.objects.get(id=comments_id)
     except Comments.DoesNotExist as e:
         return JsonResponse({'message': str(e)}, status=400)
 
@@ -184,7 +184,7 @@ def comments_detail(request, comments_id):
 @csrf_exempt
 def ratings_detail(request, ratings_id):
     try:
-        ratings = Ratings.objects.get(rating_id=ratings_id)
+        ratings = Ratings.objects.get(id=ratings_id)
     except Ratings.DoesNotExist as e:
         return JsonResponse({'message': str(e)}, status=400)
 
@@ -194,7 +194,7 @@ def ratings_detail(request, ratings_id):
 @csrf_exempt
 def delivery_detail(request, delivery_id):
     try:
-        delivery = Delivery.objects.get(delivery_id=delivery_id)
+        delivery = Delivery.objects.get(id=delivery_id)
     except Delivery.DoesNotExist as e:
         return JsonResponse({'message': str(e)}, status=400)
 

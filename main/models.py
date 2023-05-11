@@ -6,7 +6,7 @@ import datetime
 class User(models.Model):
     name =  models.CharField(max_length=50)
     email = models.CharField(max_length = 300)
-    password = models.FloatField(default = 0)
+    password = models.CharField(max_length=50)
     def to_json(self):
         return {
             'id': self.id,
@@ -103,14 +103,14 @@ class Delivery(models.Model):
     delivery_company = models.CharField(max_length=300)
     description = models.TextField(default="")
     image_url = models.CharField(max_length=300)
-    card_number = models.FloatField(default=0)
-    CSV = models.FloatField(default=0)
+    card_number = models.CharField(max_length=20)
+    CSV = models.CharField(max_length=3)
     card_name = models.CharField(max_length=300)
     created_at = datetime.datetime.now()
     delivery_date = models.TextField(default="")
     street = models.CharField(max_length=300)
-    home = models.FloatField(default=0)
-    appartment = models.FloatField(default=0)
+    home = models.CharField(max_length=5)
+    appartment = models.CharField(max_length=5)
 
     def to_json(self):
         return {
@@ -125,5 +125,7 @@ class Delivery(models.Model):
             'card_name': self.card_name,
             'street': self.street,
             'home': self.home,
-            'appartment': self.appartment
+            'appartment': self.appartment,
+            'product_id': self.product_id,
+            'user_id': self.user_id
         }
